@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div id="custom-cursor"></div>
+    <div id="progress-bar"></div>
+    <div id="preloader">
+    <div class="loader-circle"></div>
+</div>
+    <header id="home">
+    <canvas id="particles"></canvas>
+    <h1>Hi, I'm Mr Sheriff</h1>
+    <p><span id="typing"></span></p>
+    <button id="modeToggle">Toggle Dark Mode</button>
+</header>
+<nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+</nav>
+    <!-- About Section -->
+    <section id="about"  class="fade-in">
+        <h2>About Me</h2>
+        <p>I recently completed my Diploma in Computer Engineering (May 2026). 
+        I have hands-on knowledge of HTML, Python, and MySQL, and I'm currently 
+        building my skills further to become a web developer.</p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills"  class="fade-in">
+        <h2>My Skills</h2>
+        <ul>
+           <li><i class="fa-brands fa-html5"></i> HTML</li>
+<li><i class="fa-brands fa-css3-alt"></i> CSS (Learning)</li>
+<li><i class="fa-brands fa-python"></i> Python</li>
+<li><i class="fa-solid fa-database"></i> MySQL (Basics)</li>
+        </ul>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects"  class="fade-in">
+        <h2>Projects</h2>
+        <div class="project-card">
+            <h3>Personal Portfolio Website</h3>
+            <p>Built using HTML, CSS, and JavaScript. Hosted on GitHub Pages.</p>
+        </div>
+        <!-- Add more project cards here as you build them -->
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact"  class="fade-in">
+        <h2>Contact Me</h2>
+        <form id="contactForm">
+            <input type="text" placeholder="Your Name" required><br>
+            <input type="email" placeholder="Your Email" required><br>
+            <textarea placeholder="Your Message" required></textarea><br>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

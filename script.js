@@ -1,51 +1,72 @@
+const cursorGlow = document.getElementById('cursor-glow');
+
+document.addEventListener('mousemove', (e) => {
+    cursorGlow.style.left = e.clientX + 'px';
+    cursorGlow.style.top = e.clientY + 'px';
+});
+
+document.querySelectorAll('a, button, .project-card').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        cursorGlow.style.width = '40px';
+        cursorGlow.style.height = '40px';
+        cursorGlow.style.background = 'rgba(52, 152, 219, 0.3)';
+    });
+    el.addEventListener('mouseleave', () => {
+        cursorGlow.style.width = '20px';
+        cursorGlow.style.height = '20px';
+        cursorGlow.style.background = 'rgba(52, 152, 219, 0.3)';
+    });
+});
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    document.getElementById('progress-bar').style.width = scrollPercent + '%';
+});
 window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
     setTimeout(() => {
     preloader.classList.add('hidden');
-}, 1000);
+}, 700);
 });
-const canvas = document.getElementById('particles');
+const canvas = document.getElementById('matrix-bg');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = document.getElementById('home').offsetHeight;
 
-let particlesArray = [];
+const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ{}<>/;=+-*";
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+const drops = [];
 
-class Particle {
-    constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
-    }
-    update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
-        if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
-    }
-    draw() {
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
+for (let i = 0; i < columns; i++) {
+    drops[i] = 1;
+}
+
+function drawMatrix() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.15)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#00ff41";
+    ctx.font = fontSize + "px monospace";
+
+    for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+        }
+        drops[i]++;
     }
 }
 
-for (let i = 0; i < 60; i++) {
-    particlesArray.push(new Particle());
-}
+setInterval(drawMatrix, 40);
 
-function animateParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particlesArray.forEach(p => {
-        p.update();
-        p.draw();
-    });
-    requestAnimationFrame(animateParticles);
-}
-animateParticles();
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = document.getElementById('home').offsetHeight;
+});
 
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
@@ -112,3 +133,38 @@ document.querySelectorAll('a, button, .project-card').forEach(el => {
     el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
     el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
 });
+function fillIcons(containerId, iconClasses, count) {
+    const container = document.getElementById(containerId);
+    for (let i = 0; i < count; i++) {
+        const icon = document.createElement('i');
+        icon.className = iconClasses[Math.floor(Math.random() * iconClasses.length)];
+        icon.style.top = Math.random() * 90 + '%';
+        icon.style.left = Math.random() * 95 + '%';
+        icon.style.fontSize = (Math.random() * 30 + 25) + 'px';
+        icon.style.animationDuration = (Math.random() * 8 + 6) + 's';
+        icon.style.animationDelay = (Math.random() * 4) + 's';
+        container.appendChild(icon);
+    }
+}
+
+fillIcons('about-icons', [
+    'fa-solid fa-laptop-code',
+    'fa-solid fa-bug',
+    'fa-solid fa-mobile-screen',
+    'fa-solid fa-code',
+    'fa-solid fa-server',
+    'fa-solid fa-terminal',
+    'fa-solid fa-microchip',
+    'fa-solid fa-wifi'
+], 20);
+
+fillIcons('skills-icons', [
+    'fa-brands fa-html5',
+    'fa-brands fa-css3-alt',
+    'fa-brands fa-python',
+    'fa-solid fa-database',
+    'fa-solid fa-bug',
+    'fa-solid fa-code-branch',
+    'fa-solid fa-desktop',
+    'fa-solid fa-laptop'
+], 20);

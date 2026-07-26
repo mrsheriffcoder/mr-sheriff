@@ -11,13 +11,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <div id="custom-cursor"></div>
+    <div id="cursor-glow"></div>
     <div id="progress-bar"></div>
     <div id="preloader">
     <div class="loader-circle"></div>
 </div>
     <header id="home">
-    <canvas id="particles"></canvas>
+    <canvas id="matrix-bg"></canvas>
     <h1>Hi, I'm Mr Sheriff</h1>
     <p><span id="typing"></span></p>
     <button id="modeToggle">Toggle Dark Mode</button>
@@ -30,33 +30,24 @@
     <a href="#contact">Contact</a>
 </nav>
     <!-- About Section -->
-    <section id="about"  class="fade-in">
-        <h2>About Me</h2>
-        <p>I recently completed my Diploma in Computer Engineering (May 2026). 
-        I have hands-on knowledge of HTML, Python, and MySQL, and I'm currently 
-        building my skills further to become a web developer.</p>
-    </section>
-
+    <section id="about" class="fade-in tech-bg">
+    <div class="floating-icons" id="about-icons"></div>
+    <h2>About Me</h2>
+    <p>I recently completed my Diploma in Computer Engineering (May 2026). 
+    I have hands-on knowledge of HTML, Python, and MySQL, and I'm currently 
+    building my skills further to become a web developer.</p>
+</section>
     <!-- Skills Section -->
-    <section id="skills"  class="fade-in">
-        <h2>My Skills</h2>
-        <ul>
-           <li><i class="fa-brands fa-html5"></i> HTML</li>
-<li><i class="fa-brands fa-css3-alt"></i> CSS (Learning)</li>
-<li><i class="fa-brands fa-python"></i> Python</li>
-<li><i class="fa-solid fa-database"></i> MySQL (Basics)</li>
-        </ul>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects"  class="fade-in">
-        <h2>Projects</h2>
-        <div class="project-card">
-            <h3>Personal Portfolio Website</h3>
-            <p>Built using HTML, CSS, and JavaScript. Hosted on GitHub Pages.</p>
-        </div>
-        <!-- Add more project cards here as you build them -->
-    </section>
+    <section id="skills" class="fade-in tech-bg">
+    <div class="floating-icons" id="skills-icons"></div>
+    <h2>My Skills</h2>
+    <ul>
+       <li><i class="fa-brands fa-html5"></i> HTML</li>
+       <li><i class="fa-brands fa-css3-alt"></i> CSS (Learning)</li>
+       <li><i class="fa-brands fa-python"></i> Python</li>
+       <li><i class="fa-solid fa-database"></i> MySQL (Basics)</li>
+    </ul>
+</section>
 
     <!-- Contact Section -->
     <section id="contact"  class="fade-in">

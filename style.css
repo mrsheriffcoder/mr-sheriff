@@ -1,3 +1,14 @@
+#cursor-glow {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(52, 152, 219, 0.5);
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
+}
 #preloader {
     position: fixed;
     top: 0;
@@ -37,18 +48,20 @@
 
 body {
     font-family: 'Poppins', sans-serif;
+    background: #0d0d0d;
+    color: #e0e0e0;
 }
-
 header {
-    background: #2c3e50;
-    color: white;
+    background: #000000;
+    color: #ffffff;
     text-align: center;
     padding: 60px 20px;
     position: relative;
     overflow: hidden;
+    border-bottom: 1px solid #222;
 }
 
-#particles {
+#matrix-bg {
     position: absolute;
     top: 0;
     left: 0;
@@ -62,13 +75,13 @@ header h1, header p, header button {
     z-index: 1;
 }
 nav {
-    background: #1a252f;
+    background: #000000;
     display: flex;
     justify-content: center;
     gap: 20px;
     padding: 15px;
+    border-bottom: 1px solid #222;
 }
-
 nav a {
     color: white;
     text-decoration: none;
@@ -84,14 +97,14 @@ section {
     max-width: 800px;
     margin: 0 auto;
 }
-
 h2 {
-    border-bottom: 2px solid #2c3e50;
+    border-bottom: 2px solid #3498db;
     margin-bottom: 20px;
+    color: #ffffff;
 }
-
-.project-card {
-    background: #f4f4f4;
+   .project-card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 15px;
@@ -103,14 +116,15 @@ h2 {
     transform: translateY(-10px) scale(1.02);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
-
 input, textarea {
     display: block;
     width: 100%;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #ccc;
+    border: 1px solid #333;
     border-radius: 4px;
+    background: #1a1a1a;
+    color: #fff;
 }
 
 button {
@@ -144,7 +158,8 @@ html {
 }
 
 #skills li {
-    background: #f4f4f4;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
     padding: 10px 20px;
     border-radius: 8px;
     font-weight: 600;
@@ -202,4 +217,35 @@ html {
     background: rgba(52, 152, 219, 0.3);
     width: 40px;
     height: 40px;
+}
+.tech-bg {
+    position: relative;
+    overflow: hidden;
+}
+
+.floating-icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.floating-icons i {
+    position: absolute;
+    color: rgba(52, 152, 219, 0.15);
+    animation: floatIcon 10s infinite ease-in-out;
+}
+
+@keyframes floatIcon {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-25px) rotate(15deg); }
+}
+
+#about h2, #about p,
+#skills h2, #skills ul {
+    position: relative;
+    z-index: 1;
 }
